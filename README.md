@@ -34,7 +34,7 @@
 
 </p>
 <pre><code>dependencies {
-        compile 'com.github.wmuqing:timePicker:v1.0'
+        compile 'com.github.wmuqing:timePicker:v1.1'
       }</code></pre>
 <p>maven: 
 
@@ -42,7 +42,7 @@
 <pre><code>&lt;dependency&gt;
     &lt;groupId&gt;com.github.wmuqing&lt;/groupId&gt;
     &lt;artifactId&gt;timePicker&lt;/artifactId&gt;
-    &lt;version&gt;v1.0&lt;/version&gt;
+    &lt;version&gt;v1.1&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
 <p>简单备注：时间格式为日周月季年，实现简单组合，如有其他需求可简单改动
 
