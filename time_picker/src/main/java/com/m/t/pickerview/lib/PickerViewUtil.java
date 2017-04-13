@@ -1,9 +1,8 @@
 package com.m.t.pickerview.lib;
 
-import android.graphics.Color;
 import android.view.Gravity;
 
-import com.m.t.R;
+import com.time_picker.R;
 
 import java.util.Calendar;
 import java.util.Date;

@@ -11,9 +11,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 
-import com.m.t.R;
 import com.m.t.pickerview.listener.OnDismissListener;
 import com.m.t.pickerview.lib.PickerViewUtil;
+import com.time_picker.R;
 
 /**
  * 仿iOSPickerViewController控件

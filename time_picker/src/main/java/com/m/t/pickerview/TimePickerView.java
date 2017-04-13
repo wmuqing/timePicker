@@ -6,10 +6,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.m.t.R;
 import com.m.t.pickerview.lib.PickerViewUtil;
 import com.m.t.pickerview.view.BasePickerView;
 import com.m.t.pickerview.view.WheelTime;
+import com.time_picker.R;
 
 import java.text.ParseException;
 import java.util.Calendar;

@@ -4,10 +4,10 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
-import com.m.t.R;
 import com.m.t.pickerview.adapter.NumericWheelAdapter;
 import com.m.t.pickerview.lib.WheelView;
 import com.m.t.pickerview.listener.OnItemSelectedListener;
+import com.time_picker.R;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

@@ -13,9 +13,9 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.m.t.R;
 import com.m.t.pickerview.adapter.WheelAdapter;
 import com.m.t.pickerview.listener.OnItemSelectedListener;
+import com.time_picker.R;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
