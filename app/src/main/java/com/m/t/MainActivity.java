@@ -31,8 +31,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    TimePickerView timePickerView;
+    MyTimePickerView timePickerView;
 
     void onTestClick() {
         if (null == dateTime) {
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
 
         //时间选择器
-        timePickerView = new TimePickerView(mContext, true, dateTime, queryType, mWeek, mSeason, calendar.get(Calendar.YEAR) - 50, calendar.get(Calendar.YEAR) + 50);
+        timePickerView = new MyTimePickerView(mContext, true, dateTime, queryType, mWeek, mSeason,0);
 
         timePickerView.setCyclic(false);
         timePickerView.setCancelable(true);
@@ -67,4 +66,39 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+//    TimePickerView timePickerView;
+//
+//    void onTestClick() {
+//        if (null == dateTime) {
+//            dateTime = new Date();
+//        }
+//        //控制时间范围
+//        Calendar calendar = Calendar.getInstance();
+//
+//        //时间选择器
+//        timePickerView = new TimePickerView(mContext, true, dateTime, queryType, mWeek, mSeason,0);
+//
+//        timePickerView.setCyclic(false);
+//        timePickerView.setCancelable(true);
+//        //时间选择后回调
+//        timePickerView.setOnTimeSelectListener(new TimePickerView.OnTimeSelectListener() {
+//
+//            @Override
+//            public void onTimeSelect(Date date0, int type, String title, String value) {
+//                dateTime = date0;
+//                date = value;
+//                mTitle = title;
+//                queryType = type;
+//                mWeek = timePickerView.mWeek;
+//                mSeason = timePickerView.mSeason;
+//            }
+//        });
+//        if (timePickerView.isShowing()) {
+//            timePickerView.dismiss();
+//        } else {
+//            timePickerView.setTime(dateTime, mWeek, mSeason);
+//            timePickerView.show();
+//        }
+//
+//    }
 }

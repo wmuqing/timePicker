@@ -29,7 +29,10 @@ public class WheelTime {
     private WheelView wv_week;
     private WheelView wv_season;
 
+    private int tabDrawableNormalId = R.drawable.bg_date_picker_btn, tabDrawableSelectId = R.drawable.bg_date_picker_btn1;
+
     private TextView tv_type;
+    private String tabStr[] = {"按日查询","按周查询","按月查询","按季查询","按年查询"};
     public int timeType;
     public static int btnIndex = 1;
     private TextView itemDay, itemWeek, itemMonth, itemSeason, itemYear;
@@ -37,11 +40,11 @@ public class WheelTime {
     private int type;
     public static final int DEFULT_START_YEAR = 1990;
     public static final int DEFULT_END_YEAR = 2100;
-    public static final int TIME_TYPE_DAY = 1;
-    public static final int TIME_TYPE_WEEK = 2;
-    public static final int TIME_TYPE_MONTH = 3;
-    public static final int TIME_TYPE_SEASON = 4;
-    public static final int TIME_TYPE_YEAR = 5;
+    public static final int TIME_TYPE_DAY = 0;
+    public static final int TIME_TYPE_WEEK = 1;
+    public static final int TIME_TYPE_MONTH = 2;
+    public static final int TIME_TYPE_SEASON = 3;
+    public static final int TIME_TYPE_YEAR = 4;
 
 
     private int startYear = DEFULT_START_YEAR;
@@ -56,11 +59,23 @@ public class WheelTime {
         setView(view);
     }
 
-    public WheelTime(boolean hasTab, View view, int type) {
+    public WheelTime(boolean hasTab, View view, int type, int tabDrawableNormalId, int tabDrawableSelectId,String tabStr[]) {
         super();
         this.view = view;
         this.type = type;
+        if (type == 0) {
+            this.type = TIME_TYPE_WEEK;
+        }
         this.hasTab = hasTab;
+        if (tabDrawableNormalId != 0) {
+            this.tabDrawableNormalId = tabDrawableNormalId;
+        }
+        if (tabDrawableSelectId != 0) {
+            this.tabDrawableSelectId = tabDrawableSelectId;
+        }
+        if(null!=tabStr&&tabStr.length>0){
+            this.tabStr = tabStr;
+        }
         setView(view);
     }
 
@@ -97,13 +112,11 @@ public class WheelTime {
         // 年
         wv_year = (WheelView) view.findViewById(R.id.year);
         wv_year.setAdapter(new NumericWheelAdapter(startYear, endYear));// 设置"年"的显示数据
-//        wv_year.setLabel(context.getString(com.bigkoo.pickerview.R.string.pickerview_year));// 添加文字
         wv_year.setCurrentItem(year - startYear);// 初始化时显示的数据
 
         // 月
         wv_month = (WheelView) view.findViewById(R.id.month);
         wv_month.setAdapter(new NumericWheelAdapter(1, 12));
-//        wv_month.setLabel(context.getString(com.bigkoo.pickerview.R.string.pickerview_month));
         wv_month.setCurrentItem(month);
 
         // 日
@@ -206,12 +219,13 @@ public class WheelTime {
         wv_day.setVisibility(View.VISIBLE);
         wv_season.setVisibility(View.VISIBLE);
         wv_year.setVisibility(View.VISIBLE);
-        itemDay.setBackgroundResource(R.drawable.bg_date_picker_btn);
-        itemWeek.setBackgroundResource(R.drawable.bg_date_picker_btn);
-        itemMonth.setBackgroundResource(R.drawable.bg_date_picker_btn);
-        itemSeason.setBackgroundResource(R.drawable.bg_date_picker_btn);
-        itemYear.setBackgroundResource(R.drawable.bg_date_picker_btn);
+        itemDay.setBackgroundResource(tabDrawableNormalId);
+        itemWeek.setBackgroundResource(tabDrawableNormalId);
+        itemMonth.setBackgroundResource(tabDrawableNormalId);
+        itemSeason.setBackgroundResource(tabDrawableNormalId);
+        itemYear.setBackgroundResource(tabDrawableNormalId);
         int textSize = 6;
+        String tvTypeString = "";
         if (hasTab) {
             parent.setVisibility(View.VISIBLE);
         } else {
@@ -226,8 +240,8 @@ public class WheelTime {
                 wv_season.setVisibility(View.GONE);
                 btnIndex = 4;
                 timeType = TIME_TYPE_YEAR;
-                tv_type.setText("按年查询");
-                itemYear.setBackgroundResource(R.drawable.bg_date_picker_btn1);
+                tvTypeString = tabStr[type];
+                itemYear.setBackgroundResource(tabDrawableSelectId);
                 break;
             case TIME_TYPE_DAY:
                 textSize = textSize * 4;
@@ -235,8 +249,8 @@ public class WheelTime {
                 wv_season.setVisibility(View.GONE);
                 btnIndex = 0;
                 timeType = TIME_TYPE_DAY;
-                tv_type.setText("按日查询");
-                itemDay.setBackgroundResource(R.drawable.bg_date_picker_btn1);
+                tvTypeString = tabStr[type];
+                itemDay.setBackgroundResource(tabDrawableSelectId);
                 break;
             case TIME_TYPE_SEASON:
                 textSize = textSize * 4;
@@ -244,9 +258,9 @@ public class WheelTime {
                 wv_month.setVisibility(View.GONE);
                 wv_day.setVisibility(View.GONE);
                 btnIndex = 3;
-                tv_type.setText("按季查询");
+                tvTypeString = tabStr[type];
                 timeType = TIME_TYPE_SEASON;
-                itemSeason.setBackgroundResource(R.drawable.bg_date_picker_btn1);
+                itemSeason.setBackgroundResource(tabDrawableSelectId);
                 break;
             case TIME_TYPE_WEEK:
                 textSize = textSize * 4;
@@ -255,8 +269,8 @@ public class WheelTime {
                 wv_day.setVisibility(View.GONE);
                 btnIndex = 1;
                 timeType = TIME_TYPE_WEEK;
-                tv_type.setText("按周查询");
-                itemWeek.setBackgroundResource(R.drawable.bg_date_picker_btn1);
+                tvTypeString = tabStr[type];
+                itemWeek.setBackgroundResource(tabDrawableSelectId);
                 break;
             case TIME_TYPE_MONTH:
                 textSize = textSize * 4;
@@ -265,8 +279,11 @@ public class WheelTime {
                 wv_season.setVisibility(View.GONE);
                 btnIndex = 2;
                 timeType = TIME_TYPE_MONTH;
-                tv_type.setText("按月查询");
-                itemMonth.setBackgroundResource(R.drawable.bg_date_picker_btn1);
+                tvTypeString = tabStr[type];
+                itemMonth.setBackgroundResource(tabDrawableSelectId);
+        }
+        if (null != tv_type&&null!=tvTypeString&&!"".equals(tvTypeString)) {
+            tv_type.setText(tvTypeString);
         }
         wv_day.setTextSize(textSize);
         wv_month.setTextSize(textSize);

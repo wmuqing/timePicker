@@ -44,7 +44,7 @@
     &lt;artifactId&gt;timePicker&lt;/artifactId&gt;
     &lt;version&gt;v1.1&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
-<p>简单备注：时间格式为日周月季年，实现简单组合，如有其他需求可简单改动
+<p>简单备注：时间格式为日周月季年，实现简单组合，如有其他需求可仿照demo改动，仅供参考
 
 </p>
 <p>调用方式：

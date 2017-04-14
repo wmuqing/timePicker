@@ -19,28 +19,28 @@
         <TextView
             android:id="@+id/itemDay"
             style="@style/date_picker_btn"
-            android:text="日" />
+            android:text="日1" />
 
         <TextView
             android:id="@+id/itemWeek"
             style="@style/date_picker_btn"
             android:background="@drawable/bg_date_picker_btn1"
-            android:text="周" />
+            android:text="周1" />
 
         <TextView
             android:id="@+id/itemMonth"
             style="@style/date_picker_btn"
-            android:text="月" />
+            android:text="月1" />
 
         <TextView
             android:id="@+id/itemSeason"
             style="@style/date_picker_btn"
-            android:text="季" />
+            android:text="季1" />
 
         <TextView
             android:id="@+id/itemYear"
             style="@style/date_picker_btn"
-            android:text="年" />
+            android:text="年1" />
     </LinearLayout>
 
     <TextView
