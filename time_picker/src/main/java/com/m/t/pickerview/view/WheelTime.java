@@ -37,7 +37,7 @@ public class WheelTime {
     public static int btnIndex = 1;
     private TextView itemDay, itemWeek, itemMonth, itemSeason, itemYear;
 
-    private int type;
+//    private int type;
     public static final int DEFULT_START_YEAR = 1990;
     public static final int DEFULT_END_YEAR = 2100;
     public static final int TIME_TYPE_DAY = 0;
@@ -55,16 +55,16 @@ public class WheelTime {
     public WheelTime(View view) {
         super();
         this.view = view;
-        type = TIME_TYPE_WEEK;
+        timeType = TIME_TYPE_WEEK;
         setView(view);
     }
 
     public WheelTime(boolean hasTab, View view, int type, int tabDrawableNormalId, int tabDrawableSelectId,String tabStr[]) {
         super();
         this.view = view;
-        this.type = type;
+        this.timeType = type;
         if (type == 0) {
-            this.type = TIME_TYPE_WEEK;
+            this.timeType = TIME_TYPE_WEEK;
         }
         this.hasTab = hasTab;
         if (tabDrawableNormalId != 0) {
@@ -209,7 +209,7 @@ public class WheelTime {
         wv_year.setOnItemSelectedListener(wheelListener_year);
         wv_month.setOnItemSelectedListener(wheelListener_month);
 //        LogUtils.e(getTime());
-        setBtnView(type);
+        setBtnView(timeType);
     }
 
     public void setBtnView(int type) {

@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     public int mWeek;
     public int mSeason;
     private int queryType = WheelTime.TIME_TYPE_WEEK;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,33 +32,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     MyTimePickerView timePickerView;
 
     void onTestClick() {
         if (null == dateTime) {
             dateTime = new Date();
         }
-        //控制时间范围
-        Calendar calendar = Calendar.getInstance();
+        if (null == timePickerView) {
+            //时间选择器
+            timePickerView = new MyTimePickerView(mContext, true, dateTime, queryType, mWeek, mSeason, 0);
 
-        //时间选择器
-        timePickerView = new MyTimePickerView(mContext, true, dateTime, queryType, mWeek, mSeason,0);
+            timePickerView.setCyclic(false);
+            timePickerView.setCancelable(true);
+            //时间选择后回调
+            timePickerView.setOnTimeSelectListener(new TimePickerView.OnTimeSelectListener() {
 
-        timePickerView.setCyclic(false);
-        timePickerView.setCancelable(true);
-        //时间选择后回调
-        timePickerView.setOnTimeSelectListener(new TimePickerView.OnTimeSelectListener() {
-
-            @Override
-            public void onTimeSelect(Date date0, int type, String title, String value) {
-                dateTime = date0;
-                date = value;
-                mTitle = title;
-                queryType = type;
-                mWeek = timePickerView.mWeek;
-                mSeason = timePickerView.mSeason;
-            }
-        });
+                @Override
+                public void onTimeSelect(Date date0, int type, String title, String value) {
+                    dateTime = date0;
+                    date = value;
+                    mTitle = title;
+                    queryType = type;
+                    mWeek = timePickerView.mWeek;
+                    mSeason = timePickerView.mSeason;
+                }
+            });
+        }
         if (timePickerView.isShowing()) {
             timePickerView.dismiss();
         } else {
